@@ -1,12 +1,20 @@
 <template>
-<div>
+
   <h1>{{titolo}}</h1>
-</div>
+  <input type="text" ref="name">
+  <button @click="handleClick">click me</button>
 </template>
 
 <script setup>
 import {ref} from "vue";
-let titolo = 'ciao00000'
+let titolo = 'ciao'
+let name = ref(null)
+function  handleClick(e)
+{
+  const el = name.value
+  el.classList.add('active')
+  el.focus()
+}
 </script>
 
 
