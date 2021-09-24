@@ -2,7 +2,7 @@
 
   <h1>{{titolo}}</h1>
   <div v-if="showModal">
-    <Modal :header="header" :text="text" theme="sale"/>
+    <Modal :header="header" :text="text" theme="sale"  @close="toggleModal"/>
   </div>
   <button @click="toggleModal">open modal</button>
 </template>
@@ -19,7 +19,6 @@ let text = ref('Grab your ninja swag for half price!')
 let showModal = ref(false)
 
 function toggleModal(){
-  console.log("TOGGLE MODAL",showModal)
   showModal.value = !showModal.value
 }
 function  handleClick(e)

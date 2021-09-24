@@ -1,5 +1,5 @@
 <template>
- <div class="backdrop">
+ <div class="backdrop" @click.self="closeModal">
    <div class="modal" :class="{sale: theme === 'sale'}">
      <h1>{{ header }}</h1>
      <p>{{text}}</p>
@@ -8,8 +8,13 @@
 </template>
 
 <script setup>
-import {defineProps} from "vue";
+import {defineProps, defineEmits} from "vue";
+const emits = defineEmits(["close"])
 
+function closeModal() {
+  console.log("closeModal")
+  emits('close')
+}
 const props = defineProps({
   header: String,
   text: String,
