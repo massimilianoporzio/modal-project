@@ -1,14 +1,27 @@
 <template>
 
   <h1>{{titolo}}</h1>
-  <input type="text" ref="name">
-  <button @click="handleClick">click me</button>
+  <div v-if="showModal">
+    <Modal :header="header" :text="text" theme="sale"/>
+  </div>
+  <button @click="toggleModal">open modal</button>
 </template>
 
 <script setup>
 import {ref} from "vue";
-let titolo = 'ciao'
+
+import Modal from "@/components/Modal";
+
+let titolo = ref('ciao12')
 let name = ref(null)
+let header =ref("Signup for the Giveaway!")
+let text = ref('Grab your ninja swag for half price!')
+let showModal = ref(false)
+
+function toggleModal(){
+  console.log("TOGGLE MODAL",showModal)
+  showModal.value = !showModal.value
+}
 function  handleClick(e)
 {
   const el = name.value
