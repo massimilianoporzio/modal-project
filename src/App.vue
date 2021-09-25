@@ -2,9 +2,20 @@
 
   <h1>{{titolo}}</h1>
   <div v-if="showModal">
-    <Modal :header="header" :text="text" theme="sale"  @close="toggleModal"/>
+    <Modal theme="sale"  @close="toggleModal">
+      <template v-slot:links>
+        <a href="#">Sing up now</a>
+        <a href="#">Info</a>
+      </template>
+      <h1>Ninja Givaway!</h1>
+      <p>Grab your ninja swag for half price!</p>
+    </Modal>
+  </div>
+  <div v-if="showModalTwo">
+    <Modal @close="toggleModalTwo"><h2>Hello</h2></Modal>
   </div>
   <button @click="toggleModal">open modal</button>
+  <button @click="toggleModalTwo">open modal Two</button>
 </template>
 
 <script setup>
@@ -17,9 +28,13 @@ let name = ref(null)
 let header =ref("Signup for the Giveaway!")
 let text = ref('Grab your ninja swag for half price!')
 let showModal = ref(false)
+let showModalTwo = ref(false)
 
 function toggleModal(){
   showModal.value = !showModal.value
+}
+function toggleModalTwo(){
+  showModalTwo.value = !showModalTwo.value
 }
 function  handleClick(e)
 {
