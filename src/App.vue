@@ -1,7 +1,7 @@
 <template>
 
   <h1>{{titolo}}</h1>
-  <div v-if="showModal">
+  <teleport to="#modal" v-if="showModal">
     <Modal theme="sale"  @close="toggleModal">
       <template v-slot:links>
         <a href="#">Sing up now</a>
@@ -10,10 +10,10 @@
       <h1>Ninja Givaway!</h1>
       <p>Grab your ninja swag for half price!</p>
     </Modal>
-  </div>
-  <div v-if="showModalTwo">
+  </teleport>
+  <teleport to="#modal" v-if="showModalTwo">
     <Modal @close="toggleModalTwo"><h2>Hello</h2></Modal>
-  </div>
+  </teleport>
   <button @click="toggleModal">open modal</button>
   <button @click="toggleModalTwo">open modal Two</button>
 </template>
@@ -47,7 +47,7 @@ function  handleClick(e)
 
 
 <style>
-#app {
+#app, #modal {
   font-family: Avenir, Helvetica, Arial, sans-serif;
   -webkit-font-smoothing: antialiased;
   -moz-osx-font-smoothing: grayscale;
